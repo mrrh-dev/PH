@@ -64,7 +64,7 @@ console.log(
 ); */
 
 // 3
-let practice = (arr, nam) => {
+/* let practice = (arr, nam) => {
   let matchproduct = arr.find((elem) => elem.name === nam);
   if (typeof matchproduct === 'object') return matchproduct;
   else return 'undefined';
@@ -77,4 +77,112 @@ console.log(
     ],
     (name = 'Bag'),
   ),
+); */
+
+// 4
+/* let practice = (arr) => {
+  return arr.reduce((acc, elem) => {
+    return (acc += elem.price * elem.stock);
+  }, 0);
+};
+console.log(
+  practice([
+    { price: 50, stock: 4 },
+    { price: 20, stock: 10 },
+  ]),
+);
+ */
+
+// 5
+/* let practice = (arr, cat) => {
+  let totalprice = arr
+    .filter((elem) => elem.category === cat)
+    .map((elem) => (elem.price = elem.price - elem.price * 0.1))
+    .reduce((acc, elem) => (acc += elem), 0);
+  return totalprice;
+};
+console.log(
+  practice(
+    [
+      { name: 'Pen', category: 'stationery', price: 100 },
+      { name: 'Bag', category: 'accessory', price: 500 },
+      { name: 'Notebook', category: 'stationery', price: 60 },
+    ],
+    (category = 'stationery'),
+  ),
+); */
+
+// 6
+/* let practice = () => {
+  let id = 1;
+  return function inn() {
+    return id++;
+  };
+};
+let nextid = practice();
+console.log(nextid());
+console.log(nextid());
+console.log(nextid()); */
+
+// 7
+/* let practice = (arr) => {
+  let [...arr1] = arr;
+  return arr1.sort((a, b) => a.price - b.price);
+  //return arr.slice().sort((a, b) => a.price - b.price);
+};
+console.log(
+  practice([
+    { name: 'Bag', price: 500 },
+    { name: 'Pen', price: 10 },
+    { name: 'Notebook', price: 60 },
+  ]),
+); */
+
+// 8
+/* let practice = (arr, bonus) => {
+  return arr.map((object) => {
+    return { ...object, points: object.points + bonus };
+  });
+};
+console.log(practice([{ name: 'Rafi', points: 20 }], (bonus = 5)));
+ */
+
+// 9
+/* let practice = (input, target) => {
+  if (input === target) return true;
+  else return false;
+};
+console.log(practice(18, 18)); */
+
+// 10
+let practice = (arr) => {
+  let sumarray = arr.reduce((acc, elem) => {
+    /* acc[elem.product] = (acc[elem.product] || 0) + elem.unitsSold;
+    return acc; */
+    /* return Object.keys(sumarray).reduce((topproduct, nextproduct) => {
+    return sumarray[topproduct] > sumarray[nextproduct]
+      ? topproduct
+      : nextproduct;
+  }); */
+
+    let product = elem.product;
+    let units = elem.unitsSold;
+    //if (!Object.hasOwn(acc, product))
+    if (acc[product] === undefined) acc[product] = 0;
+    acc[product] += units;
+    return acc;
+  }, {});
+  console.log(sumarray);
+
+  let key = Object.keys(sumarray);
+  return key.reduce((top, next) =>
+    sumarray[top] > sumarray[next] ? top : next,
+  );
+};
+console.log(
+  practice([
+    { product: 'Pen', unitsSold: 30 },
+    { product: 'Bag', unitsSold: 12 },
+    { product: 'Pen', unitsSold: 25 },
+  ]),
 );
