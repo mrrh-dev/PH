@@ -27,6 +27,12 @@ class Students extends User {
     super(name, age, email);
     this._fee = fee;
   }
+  get email() {
+    return this._email; // can access protected member of parent class
+  }
+  /*   get age(){
+    return this._age // can't access because age is private member of parent class
+  } */
 }
 // instantiate
 // instance = object
