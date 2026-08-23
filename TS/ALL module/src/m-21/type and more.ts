@@ -31,8 +31,8 @@ console.log(friend1); */
 
 // object
 /* let user: {
-  name: String;
-  age: Number;
+  name: string;
+  age: number;
   ispassed: boolean;
 } = {
   name: 'Rejwan',
@@ -63,7 +63,7 @@ console.log(user1); */
 // literal
 /* let user2: {
   name: 'Rejwan';
-  age: Number;
+  age: number;
   ispassed?: boolean;
 } = {
   name: 'Rejwan',
@@ -264,6 +264,20 @@ function some(value: number | string) {
   console.log(value);
 }
 some(10);
+
+// intersection type -> &
+type User = {
+  name: string;
+  age: number;
+};
+type Admin = User & {
+  id: number;
+};
+const hasan: Admin = {
+  name: 'hasan',
+  age: 66,
+  id: 77,
+};
 
 /* not many thing have to know in ts
 following topics are enough -> 

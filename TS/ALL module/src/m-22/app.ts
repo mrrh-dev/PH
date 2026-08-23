@@ -197,7 +197,7 @@ console.log(apicall);
 
 // In function
 
-function ab<TT>(value: TT): TT {
+function ab<TT>(value: TT): TT | undefined {
   return value;
 }
 ab([10, 20]);
@@ -233,6 +233,18 @@ let innfn = gen<Userg>({ name: 'hasan', id: 201 });
 let [firstobject, innfucntion] = innfn;
 console.log(firstobject);
 console.log(innfucntion({ name: 'raja', id: 21 }));
+
+/* 
+Do NOT Use Generics When...
+Your code depends on the specific properties, methods, or behaviors of 
+a certain type.
+Math & Logic Operations: If you use +, -, *, <, or >, 
+use number.
+String Manipulation: If you use .toLowerCase(), .split(), .trim(), or regex, use string.
+Domain Data Objects: If the function works on data with highly specific 
+real-world meaning (e.g., User, Ticket, CartItem, Product), use an interface or type.
+
+*/
 
 // enum ->is a set of named constants.
 // Numeric
@@ -322,6 +334,26 @@ userc.age = 30;      // ❌ */
 const colors = ['red', 'green', 'blue'] as const;
 /* colors.push("yellow"); // ❌
 colors[0] = "yellow";  // ❌ */
+
+// function inside object
+type addfn = (a: number, b: number) => number;
+interface Userf {
+  name: string;
+  age: number;
+  ispassed: boolean;
+  printme: () => void;
+  //add:(a:number,b:number)=>number
+  add: addfn;
+}
+const userf: Userf = {
+  name: 'Rejwan',
+  age: 24,
+  ispassed: true,
+  printme() {},
+  add(a: number, b: number): number {
+    return 0;
+  },
+};
 
 /* not many thing have to know in ts
 following topics are enough ->
